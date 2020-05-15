@@ -13,11 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('beranda');
-});
 
-route ::get('/','berandacontroller@index');
 route ::get('/beranda','berandacontroller@index');
 route ::get('/about','aboutcontroller@index');
 route ::get('/inputpemasukkan','inputpemasukkancontroller@index');
