@@ -10,7 +10,7 @@
 		<nav class="navbar navbar-inverse" style="border-radius: 0px; ">
 			<div class="container">
 				<div class="navbar-header">
-					<a href="{{url('beranda')}}" class="navbar-brand">
+					<a href="{{url('/')}}" class="navbar-brand">
 						<strong>APP-TEST</strong>
 					</a>
 				</div>
@@ -49,10 +49,11 @@
 
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="{{url('beranda')}}">Beranda</a></li>
+						<li><a href="{{url('/')}}">Beranda</a></li>
 						<li><a href="{{url('about')}}">About</a></li>
 						
 					</ul>
+
 
 								<li href="" class="navbar-right">
 									<a href="{{url('register')}}">Register</a>
@@ -70,6 +71,22 @@
 										<a href="{{url('laporan')}}">Laporan</a>
 									</div>
 								</div>
+
+
+
+								@if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
 
 
 								<!-- <ul class="nav navbar-nav navbar-right">
