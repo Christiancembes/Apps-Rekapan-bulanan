@@ -14,41 +14,32 @@ use Illuminate\Support\Facades\Validatior;
 
 class registercontroller extends Controller
 {
+        public function create()
+        {
+            return view('register');
+        }
 
 
-    
-    protected $redirectTo ='/beranda';
+        public function store() 
+        {
+            $this->validate(request(), [
+                'name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required',    
+            ]);
 
+            $users = User::create(request(['name','email','password']));
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+            auth()->login($users);
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param array $data
-     *
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-
-
-    public function index() {
-    	return view('register');
-    }
+            return redirect()->to('/login');
+        }
 
 
      
 
 
-
-    protected function validator(array $data)
+/*   protected function validator(array $data)
     {
     	return validator::make($data, [
     		'name' => ['required' , 'string','max:255'],
@@ -70,12 +61,12 @@ class registercontroller extends Controller
 
 
 
-    /**
+    *
      * Handle a registration request for the application.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
+     
     public function register(Request $request)
     {
         $this-Validator($request->all())->validate();
@@ -95,7 +86,7 @@ class registercontroller extends Controller
     $this->guard()->login($user);
 
     return redirect($this->redirectPath());
-    }
+    }*/
 
 
 }

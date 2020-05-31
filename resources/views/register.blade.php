@@ -1,90 +1,57 @@
-@extends('template')
-@section('contentWebsite')
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-	<div class="panel-heading">
-		<strong>Register</strong>
-	</div>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Register</title>
+
+
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+</head>
+
+  
+
+      <div class="container">
+        <div class="row justify-content-center"></div>
+        <div class="col-lg-6">
+          <div card mt-5>
+            <div card-body>
+          
+
+
+
+      <h2>Register</h2>
+      <form method="POST" action="/register">
+          {{ csrf_field() }}
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name">
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" class="form-control" id="email" name="email">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password">
+          </div>
+
+          <div class="form-group">
+            <button style="cursor: pointer;" type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        
+      </form>
+    </div>
+    </div>
+    </div>
+    </div>
+</html>
+
+
+
 	
 
-	<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-        <label for="name" class="col-md-4 control-label">Name</label>
-
-            <div class="col-md-6">
-                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
-
-                    @if ($errors->has('name'))
-                    <span class="help-block">
-                    <strong>{{ $errors->first('name') }}</strong>
-                    </span>
-                    @endif
-            </div>
-    </div>
-
-	<div class="form-group row">
-		<label for="username" class="col-md-4 control-label text-md-right">{{__('Username')}}</label>
-	
-	<div class="col-md-6">
-		<input id="username" type="text" name="username" class="form-control @error('username') is-invalid @enderror" value="{{old('username')}}" requiredautocomplete="username" autofocus>
-
-			@error('username')
-			<span class="invalid-feedback" role="alert">
-				<strong>{{ $message }}</strong>
-			</span>
-			@enderror
-	
-	<div ></div>
-
-	<div class="form-group{{$errors->has('email') ? 'has-error' : ''}}">
-		<label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-		<div class="col-md-6">
-			<input id="email" type="text" class="form-control" name="email" value="{{old('email')}}">
-
-			@if ($errors->has('email'))
-				<span class="help-block">
-					<strong>{{ $errors->first('email') }}</strong>
-				</span>
-			@endif
-		</div>
-	</div>
-
-
-	<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-           <label for="password" class="col-md-4 control-label">Password</label>
-
-            <div class="col-md-6">
-                 <input id="password" type="password" class="form-control" name="password">
-
-                 @if ($errors->has('password'))
-                      <span class="help-block">
-                         <strong>{{ $errors->first('password') }}</strong>
-                       </span>
-                 @endif
-            </div>
-    </div>
-
-
-    <div class="form-group{{ $errors->has('confirm_password') ? ' has-error' : '' }}">
-          <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-          <div class="col-md-6">
-               <input id="password-confirm" type="password" class="form-control" name="confirm_password">
-               
-               @if ($errors->has('confirm_password'))
-                   <span class="help-block">
-                       <strong>{{ $errors->first('confirm_password') }}</strong>
-                   </span>
-                @endif
-           </div>
-    </div>
-
-      <div class="form-group">
-          <button type="submit" class="btn btn-md btn-primary">Submit</button>
-          <button type="reset" class="btn btn-md btn-danger">Cancel</button>
-      </div>
-
-
-	@endsection
-
-</div>
-</div>

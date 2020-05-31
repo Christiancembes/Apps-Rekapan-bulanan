@@ -14,7 +14,7 @@
 		<nav class="navbar navbar-inverse" style="border-radius: 0px; ">
 			<div class="container">
 				<div class="navbar-header">
-					<a href="{{url('/')}}" class="navbar-brand">
+					<a href="{{url('/admin')}}" class="navbar-brand">
 						<strong>APP-TEST</strong>
 					</a>
 				</div>
@@ -35,7 +35,7 @@
 }
 
 .footer {
-   position: absolute;
+   position: fixed;
    left: 0;
    bottom: 0;
    width: 100%;
@@ -58,15 +58,23 @@
 						
 					</ul>
 
-
-								<li href="" class="navbar-right">
-									<a href="{{url('register')}}">Register</a>
-								</li>
+								
 								<li class="navbar-right">
-								<a href="{{url('login')}}">Login</a>
+								<a href="{{url('logout')}}">Logout</a>
 								</li>
 								
 								
+								<div class="dropdown navbar-right">
+									<a class="dropbtn">Master Data</a>
+									<div class="dropdown-content">
+										<a href="{{url('inputpemasukkan')}}">Input Pemasukkan</a>
+										<a href="{{url('inputpengeluaran')}}">Input Pengeluaran</a>
+										<a href="{{url('laporan')}}">Laporan</a>
+									</div>
+								</div>
+
+
+
 								@if (Route::has('login'))
                 <div class="top-right links">
                     @auth
