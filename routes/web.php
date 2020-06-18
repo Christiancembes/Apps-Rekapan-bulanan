@@ -18,13 +18,14 @@ use Illuminate\Support\Facades\Route;
 route::get('/','berandacontroller@index');
 route::get('/about','aboutcontroller@index');
 
-route::get('/inputpemasukkan','inputpemasukkancontroller@index');
-route::get('/inputpengeluaran','inputpengeluarancontroller@index');
-route::get('/laporan','laporancontroller@index');
+// route::get('/inputpemasukkan','inputpemasukkancontroller@index');
+// route::get('/inputpengeluaran','inputpengeluarancontroller@index');
+route::get('posts/laporan','laporancontroller@index');
 
-route::get('/login','logincontroller@create');
+Route::get('/login','logincontroller@index');
 
-route::post('/login','logincontroller@store');
+Route::post('/login','logincontroller@store');
+
 
 route::get('/logout','logoutcontroller@destroy');
 
@@ -32,4 +33,12 @@ route::get('/register','registercontroller@create');
 route::post('/register','registercontroller@store');
 
 route::get('/admin','admincontroller@index');
+
+
+
+Route::resource('pengeluarans','PengeluaranController');
+
+
+
+
 

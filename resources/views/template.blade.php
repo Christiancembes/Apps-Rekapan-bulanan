@@ -1,120 +1,163 @@
 <!DOCTYPE html>
-	<html>
-	<head>
+<html lang="en">
 
-		<meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>APLIKASI SATU</title>
-		<link rel="stylesheet" href="{{url('assets/css/bootstrap.min.css')}}">
-	</head>
-	
-	
-	<body>
-		<nav class="navbar navbar-inverse" style="border-radius: 0px; ">
-			<div class="container">
-				<div class="navbar-header">
-					<a href="{{url('/')}}" class="navbar-brand">
-						<strong>APP-TEST</strong>
-					</a>
-				</div>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<style>
-.dropdown-content {
-	display: none;
-	position: right;
-	min-width: 160px;
-	/*z-index: 1;*/
-}
+  <title>APP-Test</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
 
-.dropdown-content a{
-	color: black;
-	padding: 12px 16px;
-	text-decoration: none;
-	display: block;
-}
+  <!-- Favicons -->
+  <link href="{{URL('asets/assets/img/favicon.png')}}" rel="icon">
+  <link href="{{URL('asets/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
-.footer {
-   position: absolute;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: grey;
-   color: white;
-   text-align: center;
-}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-.dropdown-content a:hover {background-color: #FFFFE0;}
+  <!-- Vendor CSS Files -->
+  <link href="{{url('asets/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{url('asets/assets/vendor/icofont/icofont.min.css')}}" rel="stylesheet">
+  <link href="{{url('asets/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{url('asets/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+  <link href="{{url('asets/assets/vendor/venobox/venobox.css')}}" rel="stylesheet">
+  <link href="{{url('asets/assets/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+  <link href="{{url('asets/assets/vendor/aos/aos.css')}}" rel="stylesheet">
 
-.dropdown:hover .dropdown-content {display: block;}
+  <!-- Template Main CSS File -->
+  <link href="{{url('asets/assets/css/style.css')}}" rel="stylesheet">
 
-.dropdown:hover
- </style>
+  <!-- =======================================================
+  * Template Name: Bethany - v2.0.0
+  * Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
 
-				<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li><a href="{{url('/')}}">Beranda</a></li>
-						<li><a href="{{url('about')}}">About</a></li>
-						
-					</ul>
+<body>
 
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container">
+      <div class="header-container d-flex align-items-center">
+        <div class="logo mr-auto">
+          <h1 class="text-light"><a href="{{url('/')}}"><span>APP-Test</span></a></h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        </div>
 
-								<li href="" class="navbar-right">
-									<a href="{{url('register')}}">Register</a>
-								</li>
-								<li class="navbar-right">
-								<a href="{{url('login')}}">Login</a>
-								</li>
-								
-								
-								@if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+        <nav class="nav-menu d-none d-lg-block">
+          <ul>
+            <li><a href="{{url('/')}}">Beranda</a></li>
+            <li><a href="{{url('about')}}">About</a></li>
+            
+            <li class="drop-down"><a href="">Master Data</a>
+              <ul>
+                <li><a href="{{url('posts/inputpemasukkan')}}">Input Pemasukkan</a></li>
+                <li><a href="{{url('pengeluarans')}}">Input Pengeluaran</a>
+                  
+                </li>
+                <li><a href="{{url('posts/laporan')}}">Laporan</a></li>
+                
+              </ul>
+            </li>
+              
+            <li href="" class="navbar-right">
+                  <a href="{{url('register')}}">Register</a>
+                </li>
+            <li class="navbar-right">
+                <a href="{{url('login')}}">Login</a>
+            </li>  
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-
-								<!-- <ul class="nav navbar-nav navbar-right">
-									<li class="dropdown">
-									<a href="#" class="nav-link dropdown-toggel" id="navbarDropdown" aria-haspopup="true" aria-expanded="false" data-toggel="dropdown">Data Master<span class="caret"></span>
-									</a>
-										
-								<ul class="dropdown">
-									<li><a href="{{url('inputpemasukkan')}}">Input Pemasukkan</a></li>
-									<li><a href="{{url('inputpengeluaran')}}">Input Pengeluaran</a></li>
-									<li><a href="{{url('laporan')}}">Laporan</a></li>
-								</ul> -->
-					</li>
-					
-					</ul>
-				</div>
-			</div>
-		</nav>
-
-		<div class="container">
-			<div class="panel panel-default" style="border-radius: 0px;">@section('contentWebsite')
-				@show
-			</div>
-		</div>
+          </ul>
+        </nav><!-- .nav-menu -->
+        <!-- Tombol Login -->
 
 
 
-<!-- Footer -->
-	<script src="{{url('assets/js/jquery-1.12.4.min')}}"></script>
-	<script src="{{url('assets/js/bootstrap.min.js')}}"></script>
+      </div><!-- End Header Container -->
+    </div>
+  </header><!-- End Header -->
 
+  
 
-	<footer class="text-center" style="border-radius: 100px;">
-	@copyright 2020  
+  
 
-	</footer> 
+    
+
+   
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          
+          <!-- <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{url('/')}}">Beranda</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{url('about')}}">About</a></li>
+              
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div> -->
+
+          
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="mr-md-auto text-center text-md-left">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Christian</span></strong>. All Rights Reserved
+        </div>
+        
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{{url('asets/assets/vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{url('asets/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{url('asets/assets/vendor/jquery.easing/jquery.easing.min.js')}}"></script>
+  <script src="{{url('asets/assets/vendor/php-email-form/validate.js')}}"></script>
+  <script src="{{url('asets/assets/vendor/waypoints/jquery.waypoints.min.js')}}"></script>
+  <script src="{{url('asets/assets/vendor/counterup/counterup.min.js')}}"></script>
+  <script src="{{url('asets/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+  <script src="{{url('asets/assets/vendor/venobox/venobox.min.js')}}"></script>
+  <script src="{{url('asets/assets/vendor/owl.carousel/owl.carousel.min.js')}}"></script>
+  <script src="{{url('asets/assets/vendor/aos/aos.js')}}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{url('asets/assets/js/main.js')}}"></script>
+
 </body>
+
 </html>
