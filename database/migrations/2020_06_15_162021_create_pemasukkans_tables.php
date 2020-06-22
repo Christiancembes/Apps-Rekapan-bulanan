@@ -16,7 +16,7 @@ class CreatePemasukkansTables extends Migration
         Schema::create('pemasukkans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('total');
+            $table->decimal('total');
             $table->timestamps();
         });
     }

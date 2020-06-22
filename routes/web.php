@@ -36,8 +36,8 @@ route::get('/admin','admincontroller@index');
 
 
 
-Route::resource('pengeluarans','PengeluaranController');
-
+Route::resource('pengeluarans','pengeluaran\PengeluaranController');
+Route::resource('pemasukkans', 'pengeluaran\PemasukkanController');
 
 
 

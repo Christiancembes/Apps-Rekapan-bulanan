@@ -55,8 +55,8 @@
             
             <li class="drop-down"><a href="">Master Data</a>
               <ul>
-                <li><a href="{{url('inputpemasukkan')}}">Input Pemasukkan</a></li>
-                <li><a href="{{url('inputpengeluaran')}}">Input Pengeluaran</a>
+                <li><a href="{{url('pemasukkans')}}">Input Pemasukkan</a></li>
+                <li><a href="{{url('pengeluarans')}}">Input Pengeluaran</a>
                   
                 </li>
                 <li><a href="{{url('laporan')}}">Laporan</a></li>

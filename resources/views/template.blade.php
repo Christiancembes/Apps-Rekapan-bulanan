@@ -48,14 +48,20 @@
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
 
+
         <nav class="nav-menu d-none d-lg-block">
+            
           <ul>
             <li><a href="{{url('/')}}">Beranda</a></li>
             <li><a href="{{url('about')}}">About</a></li>
             
+            
+            
             <li class="drop-down"><a href="">Master Data</a>
+              @if (Route::has('login'))
               <ul>
-                <li><a href="{{url('posts/inputpemasukkan')}}">Input Pemasukkan</a></li>
+                
+                <li><a href="{{url('pemasukkans')}}">Input Pemasukkan</a></li>
                 <li><a href="{{url('pengeluarans')}}">Input Pengeluaran</a>
                   
                 </li>
@@ -63,14 +69,17 @@
                 
               </ul>
             </li>
+            @else
+            <li class="navbar-right">
+                <a href="{{url('login')}}">Login</a>
+            </li>  
               
             <li href="" class="navbar-right">
                   <a href="{{url('register')}}">Register</a>
                 </li>
-            <li class="navbar-right">
-                <a href="{{url('login')}}">Login</a>
-            </li>  
-
+           
+            
+          @endif
           </ul>
         </nav><!-- .nav-menu -->
         <!-- Tombol Login -->
