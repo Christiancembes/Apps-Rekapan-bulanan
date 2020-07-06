@@ -18,6 +18,7 @@ class CreatePengeluaransTables extends Migration
             $table->string('nama_barang');
             $table->string('jumlah_barang');
             $table->decimal('total_harga');
+            $table->datetime('tanggal');
             $table->timestamps();
         });
     }

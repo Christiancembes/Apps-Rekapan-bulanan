@@ -59,7 +59,7 @@
                 <li><a href="{{url('pengeluarans')}}">Input Pengeluaran</a>
                   
                 </li>
-                <li><a href="{{url('laporan')}}">Laporan</a></li>
+                <li><a href="{{url('laporan-keuangan')}}">Laporan</a></li>
                 
               </ul>
             </li>

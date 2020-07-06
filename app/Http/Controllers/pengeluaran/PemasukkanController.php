@@ -5,6 +5,7 @@ namespace App\Http\Controllers\pengeluaran;
 use App\Http\Controllers\Controller;
 use App\Pemasukkan;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PemasukkanController extends Controller
 {
@@ -13,11 +14,20 @@ class PemasukkanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $pemasukkans = Pemasukkan::latest()->paginate(5);
+    public function index(Request $request)
+    {   
+        
+        $input = $request->all();
 
-        return view('postss.index', compact('pemasukkans'))->with('i', (request()->input('page',1) - 1) * 5);
+        $orderBy = isset($input['order_By']) ? $input['order_By'] : 'tanggal';
+
+        $orderRule = isset($input['order_Rule']) ? $input['order_Rule'] : 'DESC';
+
+        $limit = isset($input['limit']) ? $input['limit'] : 5;
+
+        $pemasukkans = \DB::table('pemasukkans')->orderBy($orderBy,$orderRule)->paginate($limit);
+                
+        return view('Pemasukkan.index', compact('pemasukkans'))->with('i', (request()->input('page',1) - 1) * $limit);
     }
 
     /**
@@ -27,7 +37,7 @@ class PemasukkanController extends Controller
      */
     public function create()
     {
-        return view('postss.create');
+        return view('Pemasukkan.create');
     }
 
     /**
@@ -41,6 +51,7 @@ class PemasukkanController extends Controller
         $request->validate([
             'name' => 'required',
             'total' => 'required',
+            'tanggal' => 'required',
         ]);
 
         Pemasukkan::create($request->all());
@@ -56,7 +67,7 @@ class PemasukkanController extends Controller
      */
     public function show(Pemasukkan $pemasukkan)
     {
-        return view('postss.show', compact('pemasukkan'));
+        return view('Pemasukkan.show', compact('pemasukkan'));
     }
 
     /**
@@ -67,7 +78,9 @@ class PemasukkanController extends Controller
      */
     public function edit(Pemasukkan $pemasukkan)
     {
-        return view('postss.edit',compact('pemasukkan'));
+        /*$tanggal = Carbon::tanggal('yyyy-mm-dd');*/    
+
+        return view('Pemasukkan.edit',compact('pemasukkan'));
     }
 
     /**
@@ -82,6 +95,7 @@ class PemasukkanController extends Controller
         $request->validate([
             'name' => 'required',
             'total' => 'required',
+            'tanggal' => 'required',
         ]);
 
         $pemasukkan->update($request->all());
@@ -99,6 +113,6 @@ class PemasukkanController extends Controller
     {
         $pemasukkan->delete();
 
-        return redirect()->route('postss.index')->with('success','Delete Pemasukkan Success !!!');
+        return redirect()->route('Pemasukkan.index')->with('success','Delete Pemasukkan Success !!!');
     }
 }

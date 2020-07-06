@@ -35,9 +35,16 @@ route::post('/register','registercontroller@store');
 route::get('/admin','admincontroller@index');
 
 
-
+//Manage Pengeluaran
 Route::resource('pengeluarans','pengeluaran\PengeluaranController');
+
+//Manage Pemasukan
 Route::resource('pemasukkans', 'pengeluaran\PemasukkanController');
+
+//Laporan Keuangan
+Route::get('laporan-keuangan','pengeluaran\Laporan_controller@index');
+
+Route::get('cari-laporan','pengeluaran\Laporan_controller@cari');
 
 
 

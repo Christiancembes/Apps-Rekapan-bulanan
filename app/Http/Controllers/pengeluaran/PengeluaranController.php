@@ -5,6 +5,7 @@ namespace App\Http\Controllers\pengeluaran;
 use App\Http\Controllers\Controller;
 use App\Pengeluaran;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PengeluaranController extends Controller
 {
@@ -13,11 +14,18 @@ class PengeluaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pengeluarans = Pengeluaran::latest()->paginate(5);
+        $input = $request->all();
 
-        return view('posts.index',compact('pengeluarans'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $orderBy = isset($input['order_by']) ? $input['order_by'] : 'tanggal';
+        $orderRule = isset($input['order_rule']) ? $input['order_rule'] : 'DESC';
+        $limit = isset($input['limit']) ? $input['limit'] : 5;
+        //dd($request->all());
+        /*$pengeluarans = Pengeluaran::orderBy('tanggal','DESC')->get();*/
+        $pengeluarans = \DB::table('pengeluarans')->orderBy($orderBy, $orderRule)->paginate($limit);
+
+        return view('Pengeluaran.index',compact('pengeluarans'))->with('i', (request()->input('page', 1) - 1) * $limit);
     }
 
     /**
@@ -27,7 +35,7 @@ class PengeluaranController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        return view('Pengeluaran.create');
     }
 
     /**
@@ -42,6 +50,7 @@ class PengeluaranController extends Controller
             'nama_barang' => 'required',
             'jumlah_barang' => 'required',
             'total_harga' => 'required',
+            'tanggal' => 'required|date',
         ]);
 
         Pengeluaran::create($request->all());
@@ -57,7 +66,7 @@ class PengeluaranController extends Controller
      */
     public function show(Pengeluaran $pengeluaran)
     {
-        return view('posts.show',compact('pengeluaran'));
+        return view('Pengeluaran.show',compact('pengeluaran'));
     }
 
     /**
@@ -68,7 +77,7 @@ class PengeluaranController extends Controller
      */
     public function edit(Pengeluaran $pengeluaran)
     {
-        return view('posts.edit',compact('pengeluaran'));
+        return view('Pengeluaran.edit',compact('pengeluaran'));
     }
 
     /**
@@ -84,6 +93,7 @@ class PengeluaranController extends Controller
             'nama_barang' => 'required',
             'jumlah_barang' => 'required',
             'total_harga' => 'required',
+            'tanggal' => 'required|date',
         ]);
 
         $pengeluaran->update($request->all());
@@ -101,6 +111,6 @@ class PengeluaranController extends Controller
     {
         $pengeluaran->delete();
 
-        return redirect()->route('posts.index')->with('success','Delete Pengeluaran Success !!!');
+        return redirect()->route('Pengeluaran.index')->with('success','Delete Pengeluaran Success !!!');
     }
 }
